@@ -15,7 +15,7 @@ var usuarioSchema = new Schema({
     },
     'password':{
         type:String,
-        select:false,
+        //select:false, /**Esto es para ocultar la contraseña */
         required: true
     },
     'publicaciones':archivos
