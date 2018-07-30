@@ -6,8 +6,9 @@ var comentarios = [];
 var reacciones = []; 
 
 var multimediaSchema = new Schema({
-    'archivo':{
-        type: File /**Mirar si este tipado si lo recibe node */
+    'rutaArchivo':{
+        type: String, /**Mirar si este tipado si lo recibe node */
+        required: true
     },
     'nombre':{
         type: String,
