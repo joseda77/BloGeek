@@ -6,13 +6,12 @@ var comentarios = [];
 var reacciones = []; 
 
 var multimediaSchema = new Schema({
-    'rutaArchivo':{
-        type: String, /**Mirar si este tipado si lo recibe node */
-        required: true
+    'rutaArchivo':{/**Solo se tendra en cuenta si hay fotos o imagenes, de resto se  puede obviar */
+        type: String /**Mirar si este tipado si lo recibe node */
     },
-    'nombre':{
+    'contenido':{/**Esto puede servir para un escrito,pensamiento,etc */
         type: String,
-        required: true //Mirar si el usuario quiere nombrar o no el archivo
+        required: true
     },
     'fecha':{
         type: Date,
