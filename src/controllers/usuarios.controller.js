@@ -2,7 +2,7 @@ const usuariosModel = require('../models/usuarios.model');
 
 /** Metodo que busca usuarios*/
 var getUsuario = function(req, res){
-    nombreUser = req.params.nombreUsuario;
+    nombreUser = req.params.username;
     if(nombreUser == ''){
         return res.status(500).json({ errMsg: 'No se ha ingresado ningun caracter'});
     }
@@ -17,19 +17,18 @@ var getUsuario = function(req, res){
 
 /**Metodo que crea el usuario */
 var createUsuario = function(req,res){
-    user = req.body.nombreUsuario;
+    user = req.body.username;
     contra = req.body.password;
     correo = req.body.email;
-
     if(user =='' || contra == '' || correo==''){
         return res.status(404).json({errMsg: 'Por favor complete los campos necesarios'});
     }
 
     var usuariosMod = new usuariosModel({
-        nombreUsuario: user,
+        username: user,
         email: correo,
         password: contra,
-        publicaciones: []
+        publications: []
     });
 
     usuariosMod.save(function(err){

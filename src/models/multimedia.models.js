@@ -6,24 +6,27 @@ var comentarios = [];
 var reacciones = []; 
 
 var multimediaSchema = new Schema({
-    'rutaArchivo':{/**Solo se tendra en cuenta si hay fotos o imagenes, de resto se  puede obviar */
+    'fileRoute':{/**Solo se tendra en cuenta si hay fotos o imagenes, de resto se  puede obviar */
         type: String /**Mirar si este tipado si lo recibe node */
     },
-    'contenido':{/**Esto puede servir para un escrito,pensamiento,etc */
+    'title':{
+        type:String,
+        required: true
+    },
+    'content':{/**Esto puede servir para un escrito,pensamiento,etc */
         type: String,
         required: true
     },
-    'fecha':{
+    'date':{
         type: Date,
         required: true
     },
-    'usuario':{ /**Usuario al que le pertenece la publicacion */
+    'username':{ /**Usuario al que le pertenece la publicacion */
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    'reacciones': reacciones,
-    'comentarios': comentarios
+    'reactions': reacciones,
+    'comments': comentarios
 },{
     versionKey: false
 });

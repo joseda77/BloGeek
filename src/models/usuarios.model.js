@@ -4,7 +4,7 @@ const Schema =  mongoose.Schema;
 var archivos = [];
 
 var usuarioSchema = new Schema({
-    'nombreUsuario':{
+    'username':{
         type: String,
         required: true
     },
@@ -18,7 +18,7 @@ var usuarioSchema = new Schema({
         //select:false, /**Esto es para ocultar la contraseña */
         required: true
     },
-    'publicaciones':archivos
+    'posts':archivos
 },{
     versionKey:false
 });

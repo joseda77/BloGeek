@@ -9,7 +9,7 @@ var user = null;
 
 /**Metodo que accede a todas las publicaciones de una persona */
 var postPerson = function(req, res){
-    user = req.body.nombreUsuario; //Cambiar por la cabecera de la sesion req.user
+    user = req.body.username; //Cambiar por la cabecera de la sesion req.user
     filesModel.findOne({ usuario: user},function(err, filesMod){
         if(err){
             return res.status(500).json({ errMsg: err });
@@ -20,7 +20,7 @@ var postPerson = function(req, res){
 }
 
 /**Metodo que accede a todas las publicaciones existentes */
-var allPost = function(res){
+var allPost = function(req,res){
     filesModel.find(function(err,filesMod){
         if(err){
             return res.status(500).json({ errMsg: err });
@@ -32,10 +32,13 @@ var allPost = function(res){
 
 /**Metodo que creará publicaciones */
 var createPost = function(req,res){
-    user = req.user;
-    contenido = req.contenido;
-    fecha = req.fecha;
-    multimediaRoutes = req.rutaArchivo;
+    user = req.body.username;
+    titulo = req.body.title
+    contenido = req.body.content;
+    fecha = req.body.date;
+    multimediaRoutes = req.body.fileRoute;
+
+    console.log(user);
     if(contenido == null || fecha == null){
         return res.status(404).json({ errMsg: 'Por favor ingrese algo para continuar' });
     }else if(user == null){
@@ -43,10 +46,11 @@ var createPost = function(req,res){
     }
 
     var filesMod = new filesModel({
-        rutaArchivo: multimediaRoutes,
-        contenido: contenido,
-        fecha: fecha,
-        usuario: user
+        fileRoute: multimediaRoutes,
+        content: contenido,
+        date: fecha,
+        title: titulo,
+        username: user
     });
 
     filesMod.save(function(err){
@@ -60,13 +64,14 @@ var createPost = function(req,res){
 
 /**Agrega los comentarios y reacciones al arreglo del archivo */
 var addReactions = function(req,res){
-    comentarios = req.comentarios; /**Recibe un objeto con usuario y contenido */
-    reacciones = req.reacciones;   /**Recibe un objeto con usuario y reacciones*/
+    comentarios = req.body.comments; /**Recibe un objeto con usuario y contenido */
+    reacciones = req.body.reactions;   /**Recibe un objeto con usuario y reacciones*/
 
     /***Terminar el metodo */
 }
 
 module.exports = { 
     postPerson,
-    allPost
+    allPost,
+    createPost
 }
