@@ -24,7 +24,6 @@ var multimediaSchema = new Schema({
     },
     'reacciones': reacciones,
     'comentarios': comentarios
-
 },{
     versionKey: false
 });
