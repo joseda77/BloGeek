@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /**Ambos arreglos guardan objetos con nombre y contenido */
-var comentarios = []; 
 var reacciones = []; 
 
 var multimediaSchema = new Schema({
@@ -26,7 +25,9 @@ var multimediaSchema = new Schema({
         required: true
     },
     'reactions': reacciones,
-    'comments': comentarios
+    'comments': {
+        type: Array
+    }
 },{
     versionKey: false
 });
