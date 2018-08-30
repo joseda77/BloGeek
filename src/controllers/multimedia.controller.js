@@ -34,8 +34,8 @@ var allPost = function(req,res){
 
 /**Metodo que creará publicaciones */
 var createPost = function(req,res){
-    user = req.body.username;
-    titulo = req.body.title
+    user = req.user;
+    titulo = req.body.title;
     contenido = req.body.content;
     fecha = Date.now();
     multimediaRoutes = req.body.fileRoute;
@@ -77,7 +77,7 @@ var createPost = function(req,res){
 var addComments = async function(req,res){
     comentarios = req.body.comments; /**Recibe un objeto con usuario y contenido */
     reacciones = req.body.reactions;   /**Recibe un objeto con usuario y reacciones*/
-    user = req.body.user;
+    user = req.user;
     post = req.body.post; 
     if(comentarios == null || comentarios==""){
         return res.status(400).json({errMsg: "El comentario no tiene contenido"});
@@ -93,9 +93,9 @@ var addComments = async function(req,res){
         filesMod.comments.push(comment._id);
         filesMod.save(function(err){
             if (err) {
-                return res.status(201).json({ errMsg: "Error al actualizar el post" + err });
-            } else {                
-                return res.status(201).json(filesMod.comments);/**Definir exactamanete que mostrar */
+                return res.status(500).json({ errMsg: "Error al actualizar el post" + err });
+            } else {
+                return res.status(201).json(comment);
             }
         })        
     });
