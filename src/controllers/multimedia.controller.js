@@ -8,7 +8,7 @@ var user = null;
 
 /**Metodo que accede a todas la publicaciones que el usuario logueado ha hecho*/
 var postPerson = function(req, res){
-    user = req.user
+    user = req.user;
     if (user == null || user == "") {
         return res.status(400).json({ errMsg: 'Usted no ha iniciado sesión' })
     }
@@ -34,7 +34,7 @@ var allPost = function(req,res){
 
 /**Metodo que creará publicaciones */
 var createPost = function(req,res){
-    user = req.user;
+    user = req.body.username;
     titulo = req.body.title;
     contenido = req.body.content;
     fecha = Date.now();
@@ -77,7 +77,7 @@ var createPost = function(req,res){
 var addComments = async function(req,res){
     comentarios = req.body.comments; /**Recibe un objeto con usuario y contenido */
     reacciones = req.body.reactions;   /**Recibe un objeto con usuario y reacciones*/
-    user = req.user;
+    user = req.body.username;
     post = req.body.post; 
     if(comentarios == null || comentarios==""){
         return res.status(400).json({errMsg: "El comentario no tiene contenido"});

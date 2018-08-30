@@ -7,11 +7,7 @@ var archivos = [];
 var usuarioSchema = new Schema({
     'username':{
         type: String,
-        required: true
-    },
-    'email':{
-        type: String,
-        unique: true,
+        required: true,
         lowercase: true
     },
     'password':{

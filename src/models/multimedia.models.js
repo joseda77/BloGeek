@@ -6,7 +6,7 @@ var reacciones = [];
 
 var multimediaSchema = new Schema({
     'fileRoute':{/**Solo se tendra en cuenta si hay fotos o imagenes, de resto se  puede obviar */
-        type: String /**Mirar si este tipado si lo recibe node */
+        type: String 
     },
     'title':{
         type:String,
