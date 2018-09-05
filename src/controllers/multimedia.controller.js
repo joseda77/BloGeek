@@ -8,11 +8,11 @@ var user = null;
 
 /**Metodo que accede a todas la publicaciones que el usuario logueado ha hecho*/
 var postPerson = function(req, res){
-    user = req.user;
+    user = req.user;    
     if (user == null || user == "") {
         return res.status(400).json({ errMsg: 'Usted no ha iniciado sesión' })
     }
-    filesModel.findOne({ usuario: user},function(err, filesMod){
+    filesModel.findOne({ username: user},function(err, filesMod){
         if(err){
             return res.status(500).json({ errMsg: err });
         }else{
@@ -49,7 +49,6 @@ var createPost = function(req,res){
     if (contenido === undefined ||contenido == "") {
         return res.status(400).json({ errMsg: 'El body no tiene contenido' })
     }
-    console.log(user);/**------------------------------------------------------------------ */
     if(contenido == null || fecha == null){
         return res.status(404).json({ errMsg: 'Por favor ingrese algo para continuar' });
     }else if(user == null){
@@ -77,7 +76,7 @@ var createPost = function(req,res){
 var addComments = async function(req,res){
     comentarios = req.body.comments; /**Recibe un objeto con usuario y contenido */
     reacciones = req.body.reactions;   /**Recibe un objeto con usuario y reacciones*/
-    user = req.body.username;
+    user = req.user;
     post = req.body.post; 
     if(comentarios == null || comentarios==""){
         return res.status(400).json({errMsg: "El comentario no tiene contenido"});

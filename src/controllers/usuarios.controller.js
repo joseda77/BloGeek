@@ -44,7 +44,6 @@ var createUsuario = function(req,res){
 var login = function(req, res){
     username = req.body.username;
     pass = req.body.password;
-    console.log(username,pass);
     if(username == null || pass == null){
         return res.status(404).json({ Message: 'Usuario o Contraseña invalida' });
     }
@@ -52,7 +51,6 @@ var login = function(req, res){
         if(err){
             return res.status(404).json({ errMsg: err });
         }else if(!usuariosMod){
-            console.log("Llamando");
             return res.status(404).json({ Message: 'El correo no esta asociado a una cuenta' });
         }else{
             usuariosMod.comparePassword(pass, function(err,isMatch){

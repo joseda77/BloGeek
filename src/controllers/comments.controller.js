@@ -19,8 +19,7 @@ var createComment = async function(content,user){
 
 /** Metodo que retorna el comentario correspondiente a una ID */
 var getComment = function(req,res){
-     let id = req.body.id;
-     console.log('El comentario asociado a esto es',id);
+    let id = req.params.id; 
      commentModel.findById({_id: id},function(err, commentMod){
         if(err){
             return res.status(404).json({errMsg: 'Comentario no encontrado'});

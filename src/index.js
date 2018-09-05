@@ -5,7 +5,7 @@ const path = require('path');
 /**Llamado a los modulos  */
 const usuarioRoutes = require('./routes/usuarios.routes');
 const multimediaRoutes = require('./routes/multimedia.routes');
-const commentRoutes = require('./routes/comment.routes');
+const commentRoutes = require('./routes/comments.routes');
 const connectBD = require('./server/connectionDB');
 const connectApp = require('./server/connectionApp');
 

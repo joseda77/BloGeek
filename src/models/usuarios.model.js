@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Schema =  mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
-var archivos = [];
-
 var usuarioSchema = new Schema({
     'username':{
         type: String,
@@ -13,9 +11,11 @@ var usuarioSchema = new Schema({
     'password':{
         type:String,
         select:true,//select:false, /**Esto es para ocultar la contraseña */
-        required: true
+        required: true,
     },
-    'posts':archivos
+    'posts':{ 
+        type: Array
+    }
 },{
     versionKey:false
 });
