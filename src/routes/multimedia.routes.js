@@ -8,5 +8,4 @@ app.get('/my_post',isAuth,multimediaController.postPerson);
 app.post('/create_post',isAuth,multimediaController.createPost);
 app.put('/posts',isAuth,multimediaController.addComments);
 
-
 module.exports = app;
