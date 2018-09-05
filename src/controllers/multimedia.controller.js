@@ -34,7 +34,7 @@ var allPost = function(req,res){
 
 /**Metodo que creará publicaciones */
 var createPost = function(req,res){
-    user = req.body.username;
+    user = req.user;
     titulo = req.body.title;
     contenido = req.body.content;
     fecha = Date.now();
