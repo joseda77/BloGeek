@@ -3,7 +3,7 @@ const express = require('express');
 const app = express.Router();
 
 app.get('/find=:nombreUsuario', usuariosController.getUsuario);
-app.post('/login',usuariosController.login);
-app.post('/createuser',usuariosController.createUsuario);
+app.post('/log_in',usuariosController.login);
+app.post('/sign_up',usuariosController.createUsuario);
 
 module.exports = app;
